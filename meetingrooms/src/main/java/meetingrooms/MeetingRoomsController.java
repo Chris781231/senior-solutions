@@ -53,7 +53,7 @@ public class MeetingRoomsController {
         }
     }
 
-    private void save() {
+    private void save() throws NumberFormatException {
         System.out.println("""
                 TÁRGYALÓ RÖGZÍTÉSE
                 ------------------
@@ -64,8 +64,13 @@ public class MeetingRoomsController {
         String width = scanner.nextLine();
         System.out.print("Hosszúság (méter): ");
         String length = scanner.nextLine();
-        // TODO: 2021. 06. 03. Kivételkezelés Integer.parseInt()
-        services.save(name, Integer.parseInt(width), Integer.parseInt(length));
+        try {
+            services.save(name, Double.parseDouble(width), Double.parseDouble(length));
+        } catch (NumberFormatException nfe) {
+            System.out.println("Szélességnek/hosszúságnak nem szám lett megadva!");
+            System.out.println("Tárgyaló rögzítése sikertelen!\n");
+            return;
+        }
         System.out.println("Tárgyaló rögzítve.\n");
     }
 
