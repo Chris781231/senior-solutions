@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `meetingrooms` (
+    `id` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL COLLATE 'utf8_hungarian_ci',
+    `length` DOUBLE(4,2) UNSIGNED NOT NULL,
+    `width` DOUBLE(4,2) UNSIGNED NOT NULL,
+    PRIMARY KEY (`id`) USING BTREE
+)
+    COLLATE='utf8_hungarian_ci'
+ENGINE=InnoDB;
