@@ -1,5 +1,6 @@
 package lambdaintro;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -25,9 +26,13 @@ public class SocialNetwork {
                 .forEach(consumer);
     }
 
-    public List<String> transformMembers(Function<Member, String> function) {
+    public <T> List<T> transformMembers(Function<Member, T> function) {
         return members.stream()
                 .map(function)
                 .toList();
+    }
+
+    public List<Member> getMembers() {
+        return new ArrayList<>(members);
     }
 }
