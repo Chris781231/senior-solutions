@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class SocialNetwork {
 
@@ -21,11 +22,11 @@ public class SocialNetwork {
     }
 
     public Optional<Double> averageNumberOfSkills() {
-        if (members == null || members.size() == 0) { return Optional.empty(); }
+        if (members.size() == 0) { return Optional.empty(); }
 
-        return Optional.of(members.stream()
-                .mapToDouble(m -> m.getSkills().size())
-                .average().getAsDouble());
+        return members.stream()
+                .collect(Collectors.averagingDouble(m -> m.getSkills().size()))
+                .describeConstable();
     }
 
     public List<Member> getMembers() {
