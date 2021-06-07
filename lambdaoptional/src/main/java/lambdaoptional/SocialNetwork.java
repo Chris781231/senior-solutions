@@ -22,11 +22,10 @@ public class SocialNetwork {
     }
 
     public Optional<Double> averageNumberOfSkills() {
-        if (members.size() == 0) { return Optional.empty(); }
-
-        return members.stream()
-                .collect(Collectors.averagingDouble(m -> m.getSkills().size()))
-                .describeConstable();
+        OptionalDouble average = members.stream()
+                .mapToDouble(m -> m.getSkills().size())
+                .average();
+        return average.isPresent() ? Optional.of(average.getAsDouble()) : Optional.empty();
     }
 
     public List<Member> getMembers() {
