@@ -80,4 +80,15 @@ public class LocationTest {
 
         assertEquals(1439944.635, loc.distanceFrom(otherLoc), 0.05);
     }
+
+    @Test
+    void testCreateLocationWithInvalidLatOrLon() {
+        assertThrows(IllegalArgumentException.class, () -> new Location("Budapest", -91, 19.040235));
+        assertThrows(IllegalArgumentException.class, () -> new Location("Budapest", 90.5, 19.040235));
+        assertThrows(IllegalArgumentException.class, () -> new Location("Budapest", 47.497912, -180.9));
+        IllegalArgumentException ex =
+                assertThrows(IllegalArgumentException.class, () -> new Location("Budapest", 47.497912, 180.9));
+
+        assertEquals("Invalid latitude and/or longitude. Lat: 47.497912, lon: 180.9", ex.getMessage());
+    }
 }

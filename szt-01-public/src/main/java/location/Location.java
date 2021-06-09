@@ -7,6 +7,9 @@ public class Location {
     private double lon;
 
     public Location(String name, double lat, double lon) {
+        if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+            throw new IllegalArgumentException("Invalid latitude and/or longitude. Lat: " + lat + ", lon: " + lon);
+        }
         this.name = name;
         this.lat = lat;
         this.lon = lon;
