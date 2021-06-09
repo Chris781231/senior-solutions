@@ -1,6 +1,7 @@
 package location;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,6 +21,7 @@ public class LocationTest {
         locIsOnPrimeMeridianText = "Greenwich,51.477928,0.0";
     }
 
+    @DisplayName("Tests for parse() method")
     @Test
     void testParse() {
         Location location = parser.parse(locText);
@@ -29,6 +31,7 @@ public class LocationTest {
         assertEquals(19.040235, location.getLon());
     }
 
+    @DisplayName("Tests for isOnEquator() method")
     @Test
     void testIsOnEquator() {
         Location loc1 = parser.parse(locText);
@@ -39,6 +42,7 @@ public class LocationTest {
     }
 
     @Test
+    @DisplayName("Tests for isOnPrimeMeridian() method")
     void testIsOnPrimeMeridian() {
         Location loc1 = parser.parse(locText);
         Location loc2 = parser.parse(locIsOnPrimeMeridianText);
