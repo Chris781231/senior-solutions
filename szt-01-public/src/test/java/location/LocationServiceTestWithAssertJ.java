@@ -10,9 +10,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(SoftAssertionsExtension.class)
 public class LocationServiceTestWithAssertJ {
+
+    @Test
+    void testThrowsExceptionWhenCannotReadFile() {
+        assertThrows(IllegalStateException.class, () -> new LocationService().getLocationsFromFile(Path.of("invalid.csv")));
+    }
 
     @Test
     void testGetLocationsFromFile() {

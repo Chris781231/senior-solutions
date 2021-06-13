@@ -22,6 +22,14 @@ public class LocationTest {
     }
 
     @Test
+    @DisplayName("Test parse() method with 2 params")
+    void testParseWithTwoParams() {
+        String invalidLoc = "Budapest,0.4";
+
+        assertThrows(IllegalArgumentException.class, () -> parser.parse(invalidLoc));
+    }
+
+    @Test
     @DisplayName("Tests for parse() method")
     void testParse() {
         Location location = parser.parse(locText);
@@ -70,6 +78,13 @@ public class LocationTest {
         Location otherLocation = new LocationParser().parse(locText);
 
         assertNotSame(location, otherLocation);
+    }
+
+    @Test
+    @DisplayName("Test for invalid coordinate")
+    void testInvalidCoordinate() {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> new LocationParser().parse("Budapest,a,a"));
+        assertEquals("The second and third params must be floating numbers", ex.getMessage());
     }
 
     @Test

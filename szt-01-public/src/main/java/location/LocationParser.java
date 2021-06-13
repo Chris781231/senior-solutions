@@ -2,7 +2,7 @@ package location;
 
 public class LocationParser {
 
-    public Location parse(String text) throws IllegalArgumentException {
+    public Location parse(String text) {
         String[] parts = text.split(",");
 
         checkParam(parts);
