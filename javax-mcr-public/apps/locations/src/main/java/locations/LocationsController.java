@@ -9,13 +9,23 @@ import java.util.List;
 @RestController
 public class LocationsController {
 
-    private List<Location> locations = List.of(
-            new Location("Nézsa", 0.001243, 12.123103),
-            new Location("Vác", 0.123456, 12.123456)
-    );
+    private LocationsService service;
+
+    public LocationsController(LocationsService service) {
+        this.service = service;
+    }
 
     @GetMapping("/locations")
     public String getLocations() {
-        return locations.toString();
+        StringBuilder sb = new StringBuilder();
+
+        for (Location location : service.getLocations()) {
+            sb.append(location.getId() != null ? location.getId() + ". " : "");
+            sb.append(location.getName()).append(" (");
+            sb.append(location.getLat()).append(", ");
+            sb.append(location.getLon()).append(")<br>");
+        }
+
+        return sb.toString();
     }
 }
