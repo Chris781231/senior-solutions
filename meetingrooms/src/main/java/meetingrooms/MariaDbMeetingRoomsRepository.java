@@ -46,9 +46,10 @@ public class MariaDbMeetingRoomsRepository implements MeetingRoomsRepository {
 
     @Override
     public List<String> listMeetingRoomsByNameEverySecond() {
-        return jdbcTemplate.query("SELECT `name` FROM" +
-                        "(SELECT `name`, row_number() over (ORDER BY `name`) as `rn` FROM `meetingrooms`) as `w_rownum`" +
-                        "WHERE w_rownum.rn % 2 = 0",
+        String query = "SELECT `name` FROM " +
+                "(SELECT `name`, row_number() over (ORDER BY `name`) as `rn` FROM `meetingrooms`) as `w_rownum`" +
+                "WHERE w_rownum.rn % 2 = 0 ORDER BY `name`";
+        return jdbcTemplate.query(query,
                 (rs, i) -> rs.getString("name"));
     }
 
