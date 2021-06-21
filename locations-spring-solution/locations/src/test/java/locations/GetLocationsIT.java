@@ -14,7 +14,7 @@ public class GetLocationsIT {
 
     @Test
     void getLocations() {
-        String locations = controller.getLocations();
+        String locations = controller.getLocationsString();
 
         assertThat(locations)
                 .startsWith("Nézsa")

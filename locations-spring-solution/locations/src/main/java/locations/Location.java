@@ -1,26 +1,19 @@
 package locations;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
 public class Location {
 
-    @Getter
     private Long id;
 
-    @Getter
-    private final String name;
+    private String name;
 
-    @Getter
-    private final double lat;
+    private double lat;
 
-    @Getter
-    private final double lon;
+    private double lon;
 
     public Location(String name, double lat, double lon) {
         this.name = name;

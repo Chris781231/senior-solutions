@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,8 +22,8 @@ class LocationsControllerTest {
 
     @Test
     void getLocations() {
-        when(service.getLocations()).thenReturn(List.of(new Location("Nézsa", 15, 18)));
-        assertThat(controller.getLocations())
+        when(service.getLocationsList()).thenReturn(List.of(new Location("Nézsa", 15, 18)));
+        assertThat(controller.getLocationsString())
                 .startsWith("Nézsa")
                 .contains("15", "18");
     }
