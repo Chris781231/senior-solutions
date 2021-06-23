@@ -10,7 +10,7 @@ public class DistanceService {
         this.repository = repository;
     }
 
-    Optional<Double> calculateDistance(String name1, String name2) {
+    public Optional<Double> calculateDistance(String name1, String name2) {
         Optional<Location> location1 = repository.findByName(name1);
         Optional<Location> location2 = repository.findByName(name2);
 

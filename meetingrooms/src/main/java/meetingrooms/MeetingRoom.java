@@ -1,11 +1,16 @@
 package meetingrooms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MeetingRoom implements Comparable<MeetingRoom> {
 
     private long id;
     private final String name;
     private final double width;
     private final double length;
+
+    private List<Meeting> meetings = new ArrayList<>();
 
     public MeetingRoom(String name, double width, double length) {
         this.name = name;
@@ -18,6 +23,18 @@ public class MeetingRoom implements Comparable<MeetingRoom> {
         this.name = name;
         this.width = width;
         this.length = length;
+    }
+
+    public void addMeeting(Meeting meeting) {
+        meetings.add(meeting);
+    }
+
+    public List<Meeting> getMeetings() {
+        return new ArrayList<>(meetings);
+    }
+
+    public void setMeetings(List<Meeting> meetings) {
+        this.meetings = meetings;
     }
 
     public double getArea() {
