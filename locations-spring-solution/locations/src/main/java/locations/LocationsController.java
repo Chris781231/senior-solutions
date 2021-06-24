@@ -1,10 +1,10 @@
 package locations;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/locations")
@@ -17,8 +17,13 @@ public class LocationsController {
     }
 
     @GetMapping
-    public List<LocationDto> getLocations() {
-        return service.getLocations();
+    public List<LocationDto> getLocations(
+            @RequestParam Optional<String> prefix,
+            @RequestParam Optional<Double> minLat,
+            @RequestParam Optional<Double> maxLat,
+            @RequestParam Optional<Double> minLon,
+            @RequestParam Optional<Double> maxLon) {
+        return service.getLocations(prefix, minLat, maxLat, minLon, maxLon);
     }
 
     @GetMapping("/string")
@@ -33,5 +38,10 @@ public class LocationsController {
         }
 
         return sb.toString();
+    }
+
+    @GetMapping("/{id}")
+    public LocationDto findLocationById(@PathVariable("id") AtomicLong id) {
+        return service.findLocationById(id);
     }
 }

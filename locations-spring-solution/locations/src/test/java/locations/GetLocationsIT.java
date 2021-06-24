@@ -17,7 +17,7 @@ public class GetLocationsIT {
         String locations = controller.getLocationsString();
 
         assertThat(locations)
-                .startsWith("Nézsa")
+                .startsWith("1. Nézsa")
                 .contains("Vác", "Budapest")
                 .contains("47.02", "19.12");
     }

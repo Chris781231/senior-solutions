@@ -2,10 +2,12 @@ package locations;
 
 import lombok.Data;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 @Data
 public class LocationDto {
 
-    private Long id;
+    private AtomicLong id;
 
     private String name;
 
