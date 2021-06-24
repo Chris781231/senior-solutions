@@ -3,9 +3,7 @@ package locations;
 import lombok.Data;
 
 @Data
-public class LocationDto {
-
-    private Long id;
+public class CreateLocationCommand {
 
     private String name;
 

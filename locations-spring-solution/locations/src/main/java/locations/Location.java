@@ -2,14 +2,12 @@ package locations;
 
 import lombok.*;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location {
 
-    private AtomicLong id;
+    private Long id;
 
     private String name;
 
