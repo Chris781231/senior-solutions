@@ -17,5 +17,4 @@ public class Car {
     private Status status;
 
     private List<KmState> kmStates;
-
 }
