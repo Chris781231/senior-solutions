@@ -1,0 +1,14 @@
+POST http://localhost:8080/api/vaccination
+Content-Type: application/json
+
+{
+  "sid": "123456782",
+  "city": "Budapest",
+  "date": "2021-06-30",
+  "type": "PFIZER",
+  "status": "RESERVED"
+}
+
+###
+GET http://localhost:8080/api/vaccination
+Accept: application/json

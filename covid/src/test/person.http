@@ -1,0 +1,20 @@
+GET http://localhost:8080/api/covid/123456755
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/covid
+Accept: application/json
+###
+POST http://localhost:8080/api/covid
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Balogh Béla",
+  "sid": "123456755",
+  "birthOfDate": "1970-03-05",
+  "city": "Budapest",
+  "address": "Széchenyi 4"
+}
+
