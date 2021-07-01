@@ -1,0 +1,25 @@
+PUT http://localhost:8080/api/movies/2/rating
+Content-Type: application/json
+
+{
+  "rating" : 4
+}
+
+###
+GET http://localhost:8080/api/movies?titlePrefix=Tit
+Accept: application/json
+
+###
+POST http://localhost:8080/api/movies
+Content-Type: application/json
+
+{
+  "title": "Lord of the Rings - Two Towers",
+  "length": 143.0
+}
+
+###
+DELETE http://localhost:8080/api/movies/2
+Content-Type: application/json
+
+{}
