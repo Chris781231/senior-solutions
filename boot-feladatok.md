@@ -15,10 +15,10 @@ Kérlek jelöld be, hogy melyik gyakorlati feladatokat oldottad meg!
 * [x] Java alkalmazások Dockerrel
 * [ ] Docker Layers
 * [x] Feltöltés GIT repository-ba
-* [ ] REST webszolgáltatások - GET művelet
-* [ ] GET műveletek paraméterezése
-* [ ] REST webszolgáltatások POST és DELETE művelet
-* [ ] Státuszkódok és hibakezelés
+* [x] REST webszolgáltatások - GET művelet
+* [x] GET műveletek paraméterezése
+* [x] REST webszolgáltatások POST és DELETE művelet
+* [x] Státuszkódok és hibakezelés
 * [ ] Integrációs tesztelés
 * [ ] Swagger UI
 * [ ] Tesztelés Rest Assured használatával
