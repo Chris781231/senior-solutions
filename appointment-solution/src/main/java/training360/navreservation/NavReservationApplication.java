@@ -15,6 +15,6 @@ public class NavReservationApplication {
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
-    };
+    }
 
 }

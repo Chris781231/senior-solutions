@@ -16,11 +16,11 @@ import java.util.List;
 @Service
 public class ReservationService {
 
-    private List<Reservation> reservations = new ArrayList<>(List.of(
+    private final List<Reservation> reservations = new ArrayList<>(List.of(
             new Reservation("1234567890", "001", LocalDateTime.of(2021,8,1,10,0), LocalDateTime.of(2021,8,1,11,0))
     ));
 
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     public ReservationService(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
@@ -33,7 +33,7 @@ public class ReservationService {
     );
 
     public List<Type> getTypes() {
-        return new ArrayList(types);
+        return new ArrayList<>(types);
     }
 
     public ReservationDTO createReservation(CreateReservationCommand command) {
