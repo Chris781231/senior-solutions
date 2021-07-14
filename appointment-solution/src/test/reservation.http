@@ -1,0 +1,21 @@
+GET http://localhost:8080/api/appointments
+Accept: application/json
+
+###
+POST http://localhost:8080/api/appointments
+Content-Type: application/json
+
+{
+  "taxID": "1111111111",
+  "caseNumber": "001",
+  "interval": {
+    "start": "2021-08-02T11:00:00",
+    "end": "2020-08-02T12:00:00"
+  }
+}
+
+###
+GET http://localhost:8080/api/types
+Accept: application/json
+
+###
