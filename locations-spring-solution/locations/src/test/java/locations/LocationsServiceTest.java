@@ -1,5 +1,7 @@
 package locations;
 
+import locations.entity.Location;
+import locations.service.LocationsService;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 

@@ -1,17 +1,16 @@
-package locations;
+package locations.controller;
 
+import locations.entity.Location;
+import locations.entity.LocationDto;
+import locations.service.LocationsService;
+import locations.command.CreateLocationCommand;
+import locations.command.UpdateLocationCommand;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.zalando.problem.Problem;
-import org.zalando.problem.Status;
-import org.zalando.problem.ThrowableProblem;
 
-import java.net.URI;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/locations")
@@ -52,15 +51,6 @@ public class LocationsController {
         return service.findLocationById(id);
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity findLocationById(@PathVariable("id") Long id) {
-//        try {
-//            return ResponseEntity.ok(service.findLocationById(id));
-//        } catch (IllegalArgumentException iae) {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteLocation(@PathVariable("id") long id) {
@@ -69,27 +59,14 @@ public class LocationsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public LocationDto createLocation(@RequestBody CreateLocationCommand command) {
+    public LocationDto createLocation(@RequestBody @Valid CreateLocationCommand command) {
         return service.createLocation(command);
     }
 
     @PutMapping("/{id}")
-    public LocationDto updateLocation(@PathVariable("id") long id, @RequestBody UpdateLocationCommand command) {
+    public LocationDto updateLocation(@PathVariable("id") long id, @RequestBody @Valid UpdateLocationCommand command) {
         return service.updateLocation(id, command);
     }
 
-    @ExceptionHandler(LocationNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Problem> handleNotFound(LocationNotFoundException lnfe) {
-        Problem problem = Problem.builder()
-                .withType(URI.create("locations/not-found"))
-                .withTitle("Not found")
-                .withStatus(Status.NOT_FOUND)
-                .withDetail(lnfe.getMessage())
-                .build();
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
-                .body(problem);
-    }
+
 }

@@ -1,5 +1,8 @@
 package locations;
 
+import locations.controller.LocationsController;
+import locations.entity.Location;
+import locations.service.LocationsService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

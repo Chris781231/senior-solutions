@@ -1,4 +1,4 @@
-package locations;
+package locations.entity;
 
 import lombok.*;
 

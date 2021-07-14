@@ -1,4 +1,4 @@
-package locations;
+package locations.exceptionhandler;
 
 public class LocationNotFoundException extends RuntimeException {
 

@@ -1,15 +1,13 @@
-package locations;
+package locations.service;
 
+import locations.entity.Location;
+import locations.entity.LocationDto;
+import locations.exceptionhandler.LocationNotFoundException;
+import locations.command.CreateLocationCommand;
+import locations.command.UpdateLocationCommand;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.modelmapper.internal.bytebuddy.description.method.MethodDescription;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -82,5 +80,10 @@ public class LocationsService {
                 .findFirst()
                 .orElseThrow(() -> new LocationNotFoundException("Cannot found location: " + id));
         locations.remove(location);
+    }
+
+    public void deleteAll() {
+        atomicLong = new AtomicLong();
+        locations.clear();
     }
 }
