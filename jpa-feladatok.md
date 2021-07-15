@@ -5,7 +5,7 @@
 * [x] További egyszerű műveletek JPA-val
 * [x] További egyszerű műveletek JPA-val - gyakorlat
 * [x] Architektúra és integrációs tesztelés
-* [ ] Entitások konfigurálása
+* [x] Entitások konfigurálása
 * [ ] Elsődleges kulcs
 * [ ] Entitások életciklusa
 * [ ] Többértékű attribútumok
