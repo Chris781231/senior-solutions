@@ -1,13 +1,10 @@
 package training360.activitytracker;
 
-import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mariadb.jdbc.MariaDbDataSource;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,28 +15,28 @@ public class ActivityDaoIT {
 
     private ActivityDao dao;
 
-//    // with JPA-Hibernate
-//    @BeforeEach
-//    void init() {
-//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("pu");
-//        dao = new ActivityDao(factory);
-//    }
-
-    // with Flyway
+    // with JPA-Hibernate
     @BeforeEach
-    void init() throws SQLException {
-        MariaDbDataSource dataSource = new MariaDbDataSource();
-        dataSource.setUrl("jdbc:mariadb://localhost:3308/activitytracker_jpa?useUnicode=true");
-        dataSource.setUser("activitytracker_jpa");
-        dataSource.setPassword("activitytracker_jpa");
-
-        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
-        flyway.clean();
-        flyway.migrate();
-
+    void init() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("pu");
         dao = new ActivityDao(factory);
     }
+
+    // with Flyway
+//    @BeforeEach
+//    void init() throws SQLException {
+//        MariaDbDataSource dataSource = new MariaDbDataSource();
+//        dataSource.setUrl("jdbc:mariadb://localhost:3308/activitytracker_jpa?useUnicode=true");
+//        dataSource.setUser("activitytracker_jpa");
+//        dataSource.setPassword("activitytracker_jpa");
+//
+//        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+//        flyway.clean();
+//        flyway.migrate();
+//
+//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("pu");
+//        dao = new ActivityDao(factory);
+//    }
 
     @Test
     void saveThenFindTest() {
