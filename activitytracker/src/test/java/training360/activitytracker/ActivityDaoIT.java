@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ActivityDaoIT {
 
@@ -49,6 +49,14 @@ public class ActivityDaoIT {
     }
 
     @Test
+    void saveThenFindActivityCreatedAtTest() {
+        Activity activity = new Activity(LocalDateTime.now().minusHours(2), "Futás a hegyekben", Type.RUNNING);
+        dao.saveActivity(activity);
+
+        assertEquals(LocalDateTime.now().withSecond(0).withNano(0), activity.getCreatedAt().withSecond(0).withNano(0));
+    }
+
+    @Test
     void saveThenListAllTest() {
         dao.saveActivity(new Activity(LocalDateTime.now().minusHours(2), "Futás a hegyekben", Type.RUNNING));
         dao.saveActivity(new Activity(LocalDateTime.now().minusHours(1), "10km bringázás", Type.BIKING));
@@ -59,5 +67,19 @@ public class ActivityDaoIT {
                 .hasSize(2)
                 .extracting(Activity::getType)
                 .containsExactly(Type.RUNNING, Type.BIKING);
+    }
+
+    @Test
+    void updateActivityTest() throws InterruptedException {
+        Activity activity = new Activity(LocalDateTime.now().minusHours(2), "Futás a hegyekben", Type.RUNNING);
+        dao.saveActivity(activity);
+        assertNull(activity.getUpdatedAt());
+
+
+        dao.updateActivity(activity.getId(), "3km futás aszfalton");
+        Activity updatedActivity = dao.findActivityById(activity.getId());
+
+        assertNotNull(updatedActivity.getUpdatedAt());
+        assertEquals("3km futás aszfalton", updatedActivity.getDesc());
     }
 }

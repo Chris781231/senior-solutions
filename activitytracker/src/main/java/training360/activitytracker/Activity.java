@@ -32,6 +32,10 @@ public class Activity {
     @Column(nullable = false, length = 20)
     private Type type;
 
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
     public Activity(LocalDateTime startTime, String desc, Type type) {
         this.startTime = startTime;
         this.desc = desc;
