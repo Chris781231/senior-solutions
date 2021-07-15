@@ -1,0 +1,17 @@
+POST http://localhost:8080/api/mathematicians
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "favoriteThemes": [
+    "Geometry"
+  ],
+  "dateOfBirth": "1978-01-02",
+  "favoritePrime": 3
+}
+
+###
+GET http://localhost:8080/api/mathematicians
+Accept: application/json
+
+###
