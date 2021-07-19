@@ -1,0 +1,26 @@
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{
+  "owner": "Sabina Parker"
+}
+
+###
+GET http://localhost:8080/api/accounts
+Accept: application/json
+
+###
+DELETE http://localhost:8080/api/accounts
+
+###
+DELETE http://localhost:8080/api/accounts/00000001
+
+###
+PUT http://localhost:8080/api/accounts/00000001
+Content-Type: application/json
+
+{
+  "owner": "Lucy Parker"
+}
+
+###
