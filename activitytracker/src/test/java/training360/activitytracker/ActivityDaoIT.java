@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -81,5 +82,14 @@ public class ActivityDaoIT {
 
         assertNotNull(updatedActivity.getUpdatedAt());
         assertEquals("3km futás aszfalton", updatedActivity.getDesc());
+    }
+
+    @Test
+    void labelsTest() {
+        Activity activity = new Activity(LocalDateTime.now().minusHours(2), "Futás a hegyekben", Type.RUNNING);
+        activity.setLabels(Set.of("Running", "5km", "Hill"));
+        dao.saveActivity(activity);
+
+        Activity anotherActivity = dao.findActivityByIdWithLabels(activity.getId());
     }
 }

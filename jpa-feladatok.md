@@ -8,7 +8,7 @@
 * [x] Entitások konfigurálása
 * [x] Elsődleges kulcs
 * [x] Entitások életciklusa
-* [ ] Többértékű attribútumok
+* [x] Többértékű attribútumok
 * [ ] Kapcsolatok
 * [ ] Lekérdezések
 * [ ] Haladó lekérdezések

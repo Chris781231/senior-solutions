@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "activities")
@@ -35,6 +37,11 @@ public class Activity {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    @ElementCollection
+    @CollectionTable(name = "labels", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "label")
+    private Set<String> labels;
 
     public Activity(LocalDateTime startTime, String desc, Type type) {
         this.startTime = startTime;
