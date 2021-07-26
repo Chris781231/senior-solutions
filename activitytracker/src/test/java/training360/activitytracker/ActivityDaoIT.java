@@ -91,5 +91,29 @@ public class ActivityDaoIT {
         dao.saveActivity(activity);
 
         Activity anotherActivity = dao.findActivityByIdWithLabels(activity.getId());
+        assertEquals(Set.of("Running", "5km", "Hill"), anotherActivity.getLabels());
+    }
+
+    @Test
+    void trackPointsTest() {
+        TrackPoint trackPoint = new TrackPoint(LocalDateTime.now().minusHours(2), 47.123103, 19.17625);
+        TrackPoint trackPoint2 = new TrackPoint(LocalDateTime.now().minusHours(1), 47.123101, 19.17623);
+
+        Activity activity = new Activity(LocalDateTime.now().minusHours(4), "Futás a hegyekben", Type.RUNNING);
+        activity.addTrackPoint(trackPoint);
+        activity.addTrackPoint(trackPoint2);
+        dao.saveActivity(activity);
+
+        Activity anotherActivity = dao.findActivityByIdWithTrackPoints(activity.getId());
+        System.out.println(anotherActivity.getTrackPoints());
+//        assertEquals(2, anotherActivity.getTrackPoints().size());
+    }
+
+    @Test
+    void trackPointsAddTest() {
+        Activity activity = new Activity(LocalDateTime.now().minusHours(2), "Futás a hegyekben", Type.RUNNING);
+        dao.saveActivity(activity);
+
+        dao.addTrackPoint(activity.getId(), new TrackPoint(LocalDateTime.now().minusHours(2), 47.123103, 19.17625));
     }
 }
