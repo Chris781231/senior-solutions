@@ -50,6 +50,9 @@ public class Activity {
     @Column(name = "label")
     private Set<String> labels;
 
+    @ManyToMany(mappedBy = "activities")
+    private List<Area> areas = new ArrayList<>();
+
     public Activity(LocalDateTime startTime, String desc, Type type) {
         this.startTime = startTime;
         this.desc = desc;
