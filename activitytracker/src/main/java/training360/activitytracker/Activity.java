@@ -1,5 +1,6 @@
 package training360.activitytracker;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -37,7 +38,7 @@ public class Activity {
     private Type type;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true, mappedBy = "activity")
-    @OrderBy("time")
+    @OrderBy(value = "time")
     private List<TrackPoint> trackPoints;
 
     private LocalDateTime createdAt;
