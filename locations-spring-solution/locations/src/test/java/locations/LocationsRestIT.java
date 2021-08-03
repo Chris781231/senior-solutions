@@ -23,9 +23,6 @@ public class LocationsRestIT {
     @Autowired
     TestRestTemplate template;
 
-//    @Autowired
-//    LocationsService service;
-
     @BeforeEach
     void init() {
         template.delete("/locations");
