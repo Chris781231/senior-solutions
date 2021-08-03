@@ -32,4 +32,4 @@ Kérlek jelöld be, hogy melyik gyakorlati feladatokat oldottad meg!
 * [x] MariaDB
 * [x] Integrációs tesztelés
 * [.] Alkalmazás futtatása Dockerben MariaDB-vel
-* [.] Séma inicializálás Flyway-jel
+* [x] Séma inicializálás Flyway-jel
