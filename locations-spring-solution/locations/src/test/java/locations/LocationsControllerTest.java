@@ -1,6 +1,7 @@
 package locations;
 
 import locations.controller.LocationsController;
+import locations.dto.LocationDto;
 import locations.entity.Location;
 import locations.service.LocationsService;
 import org.junit.jupiter.api.Test;
@@ -25,9 +26,8 @@ class LocationsControllerTest {
 
     @Test
     void getLocations() {
-        when(service.getLocationsList()).thenReturn(List.of(new Location("Nézsa", 15, 18)));
+        when(service.getLocationsList()).thenReturn(List.of(new LocationDto(1L, "Nézsa", 15, 18)));
         assertThat(controller.getLocationsString())
-                .startsWith("Nézsa")
-                .contains("15", "18");
+                .contains("Nézsa", "15", "18");
     }
 }

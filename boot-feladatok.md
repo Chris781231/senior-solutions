@@ -10,7 +10,7 @@ Kérlek jelöld be, hogy melyik gyakorlati feladatokat oldottad meg!
 * [ ] Build és futtatás Gradle használatával
 * [x] Unit és integrációs tesztek
 * [ ] Developer Tools
-* [ ] Twelve Factor App
+* [x] Twelve Factor App
 * [x] Bevezetés a Docker használatába
 * [x] Java alkalmazások Dockerrel
 * [ ] Docker Layers
@@ -19,15 +19,17 @@ Kérlek jelöld be, hogy melyik gyakorlati feladatokat oldottad meg!
 * [x] GET műveletek paraméterezése
 * [x] REST webszolgáltatások POST és DELETE művelet
 * [x] Státuszkódok és hibakezelés
-* [ ] Integrációs tesztelés
-* [ ] Swagger UI
+* [x] Integrációs tesztelés
+* [x] Swagger UI
 * [ ] Tesztelés Rest Assured használatával
 * [ ] Rest Assured séma validáció
 * [ ] Content Negotiation
-* [ ] Validáció
+* [x] Validáció
 * [ ] Spring Boot konfiguráció
 * [ ] Spring Boot naplózás
 * [ ] Spring JdbcTemplate
-* [ ] Spring Data JPA
-* [ ] MariaDB
-* [ ] Integrációs tesztelés
+* [x] Spring Data JPA
+* [x] MariaDB
+* [x] Integrációs tesztelés
+* [.] Alkalmazás futtatása Dockerben MariaDB-vel
+* [.] Séma inicializálás Flyway-jel

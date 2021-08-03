@@ -1,7 +1,7 @@
 package locations;
 
 import locations.command.CreateLocationCommand;
-import locations.entity.LocationDto;
+import locations.dto.LocationDto;
 import locations.service.LocationsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,12 +23,12 @@ public class LocationsRestIT {
     @Autowired
     TestRestTemplate template;
 
-    @Autowired
-    LocationsService service;
+//    @Autowired
+//    LocationsService service;
 
     @BeforeEach
     void init() {
-        service.deleteAll();
+        template.delete("/locations");
     }
 
     @Test
@@ -51,10 +51,10 @@ public class LocationsRestIT {
 
     @Test
     void getLocationById() {
-        template.postForObject("/locations", new CreateLocationCommand("Budapest", 47.12, 19.17), LocationDto.class);
-        template.postForObject("/locations", new CreateLocationCommand("Nézsa", 47.18, 19.12), LocationDto.class);
+        LocationDto budapest = template.postForObject("/locations", new CreateLocationCommand("Budapest", 47.12, 19.17), LocationDto.class);
+        LocationDto nezsa = template.postForObject("/locations", new CreateLocationCommand("Nézsa", 47.18, 19.12), LocationDto.class);
 
-        LocationDto result = template.exchange("/locations/1",
+        LocationDto result = template.exchange("/locations/" + budapest.getId(),
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<LocationDto>() {

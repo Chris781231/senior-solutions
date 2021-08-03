@@ -1,4 +1,4 @@
-package locations.entity;
+package locations.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -2,11 +2,17 @@ package locations.entity;
 
 import lombok.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "locations")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

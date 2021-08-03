@@ -3,7 +3,7 @@ package locations.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import locations.entity.Location;
-import locations.entity.LocationDto;
+import locations.dto.LocationDto;
 import locations.service.LocationsService;
 import locations.command.CreateLocationCommand;
 import locations.command.UpdateLocationCommand;
@@ -35,12 +35,18 @@ public class LocationsController {
         return service.getLocations(prefix, minLat, maxLat, minLon, maxLon);
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "Finds a location by id")
+    public LocationDto findLocationById(@PathVariable("id") long id) {
+        return service.findLocationById(id);
+    }
+
     @GetMapping("/string")
-    @Operation(summary = "List locations (This method is not call the service, StringBuilder is under the hood")
+    @Operation(summary = "List locations (This method is not called by service, StringBuilder is under the hood")
     public String getLocationsString() {
         StringBuilder sb = new StringBuilder();
 
-        for (Location location : service.getLocationsList()) {
+        for (LocationDto location : service.getLocationsList()) {
             sb.append(location.getId() != null ? location.getId() + ". " : "");
             sb.append(location.getName()).append(" (");
             sb.append(location.getLat()).append(", ");
@@ -48,19 +54,6 @@ public class LocationsController {
         }
 
         return sb.toString();
-    }
-
-    @GetMapping("/{id}")
-    @Operation(summary = "Finds a location by id")
-    public LocationDto findLocationById(@PathVariable("id") long id) {
-        return service.findLocationById(id);
-    }
-
-    @DeleteMapping("/{id}")
-    @Operation(summary = "Deletes a location by id")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLocation(@PathVariable("id") long id) {
-        service.deleteLocation(id);
     }
 
     @PostMapping
@@ -77,5 +70,19 @@ public class LocationsController {
         return service.updateLocation(id, command);
     }
 
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Deletes a location by id")
+    @ApiResponse(responseCode = "204", description = "Location has been deleted.")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteLocation(@PathVariable("id") long id) {
+        service.deleteLocation(id);
+    }
 
+    @DeleteMapping
+    @Operation(summary = "Delete all of locations")
+    @ApiResponse(responseCode = "204", description = "Locations have been deleted.")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAll() {
+        service.deleteAll();
+    }
 }

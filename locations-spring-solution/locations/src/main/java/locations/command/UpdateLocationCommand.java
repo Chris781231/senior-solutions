@@ -21,10 +21,10 @@ public class UpdateLocationCommand {
     @Schema(description = "latitude of location", example = "47.010205")
     @Min(-90)
     @Max(90)
-    private double lat;
+    private Double lat;
 
     @Schema(description = "longitude of location", example = "19.141531")
     @Min(-180)
     @Max(180)
-    private double lon;
+    private Double lon;
 }
