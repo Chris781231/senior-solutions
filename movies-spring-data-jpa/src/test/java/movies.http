@@ -1,0 +1,21 @@
+###
+GET http://localhost:8080/api/movies/
+Accept: application/json
+
+###
+POST http://localhost:8080/api/movies
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Ironman"
+}
+
+###
+POST http://localhost:8080/api/movies/2/rating
+Content-Type: application/json
+Accept: application/json
+
+{
+  "rating": 4
+}
